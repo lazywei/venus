@@ -61,7 +61,7 @@ module Venus
 
       def config
         ["config/#{@settinglogic_yml}", "config/#{@settinglogic_yml}.example"].each do |to_file|
-          insert_template(to_file, "config.yml.erb", :after => "&defaults\n")
+          insert_template(to_file, "setting.yml.erb", :after => "&defaults\n")
         end
       end
 
