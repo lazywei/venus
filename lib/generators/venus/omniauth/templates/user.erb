@@ -1,4 +1,5 @@
 
+  extend OmniauthCallbacks
   has_many :authorizations, :dependent => :destroy
 
   def bind_service(response)

@@ -50,7 +50,7 @@ module Venus
 
       def model
         generate "model authorization provider:string uid:string user_id:integer token:string secret:string"
-        template 'omniauth_callback.rb.erb', 'app/models/user/omniauth_callback.rb', :force => true
+        template 'omniauth_callbacks.rb.erb', 'app/models/user/omniauth_callbacks.rb', :force => true
         insert_template("app/models/user.rb", "user.erb", :before => "\nend\n")
         insert_template("app/models/authorization.rb", "authorization.rb", :after => "Base\n")
         replace_in_file("app/models/user.rb", "  devise ", "  devise :omniauthable, ")
