@@ -29,7 +29,11 @@ module Venus
       def gemfile
         add_gem('omniauth')
         @providers.each do |provider, |
-          add_gem("omniauth-#{provider}")
+          if provider == :google
+            add_gem("omniauth-google-oauth2")
+          else
+            add_gem("omniauth-#{provider}")
+          end
         end
       end
 
