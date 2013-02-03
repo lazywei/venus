@@ -17,7 +17,7 @@ module Venus
         @settinglogic_yml = ask?("Your settinglogic yaml file in config/ ?", 'setting.yml')
 
         @providers = {}
-        [:facebook, :github, :twitter].each do |provider|
+        [:facebook, :github, :twitter, :google].each do |provider|
           if ask?("Use '#{provider}'?", true)
             token = ask?("#{provider.capitalize} App ID?", '012345678987654')
             secret = ask?("#{provider.capitalize} App Secret?", '1a2b3c4d5e6f7g8h9i12345678987654')
@@ -29,7 +29,11 @@ module Venus
       def gemfile
         add_gem('omniauth')
         @providers.each do |provider, |
-          add_gem("omniauth-#{provider}")
+          if provider == :google
+            add_gem("omniauth-google-oauth2")
+          else
+            add_gem("omniauth-#{provider}")
+          end
         end
       end
 
